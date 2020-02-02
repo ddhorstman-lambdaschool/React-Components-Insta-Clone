@@ -6,26 +6,21 @@ import "./Comment.css";
 
 const CommentSection = props => {
   let [comments, updateComments] = useState([]);
-  function submitFunction(event) {
+  function submitComment(event, commentText) {
     updateComments(
       comments.concat({
         username: "David",
-        text: event.target.firstChild.value
+        text: commentText
       })
     );
     event.preventDefault();
   }
-  function changeFunction() {}
   return (
     <div>
-      {comments.map((comment, idx) => (
-        <Comment key={idx} comment={comment} />
-      ))}
-      <CommentInput
-        submitComment={submitFunction}
-        comment=""
-        changeComment={changeFunction}
-      />
+      {comments.map((comment, idx) => {
+        return <Comment key={idx} comment={comment} />;
+      })}
+      <CommentInput submitComment={submitComment} comment="" />
     </div>
   );
 };
