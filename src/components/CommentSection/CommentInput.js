@@ -6,8 +6,9 @@ const CommentInput = props => {
     <form
       className="comment-form"
       onSubmit={event => {
-        props.submitComment(event, comment);
+        props.submitComment(comment);
         changeComment("");
+        event.preventDefault();
       }}
     >
       <input
