@@ -8,10 +8,9 @@ const CommentSection = props => {
   let [comments, updateComments] = useState([]);
   function submitFunction(event) {
     updateComments(
-      //console.log(event.target)
       comments.concat({
         username: "David",
-        text: `${event.target.firstChild.value}`
+        text: event.target.firstChild.value
       })
     );
     event.preventDefault();

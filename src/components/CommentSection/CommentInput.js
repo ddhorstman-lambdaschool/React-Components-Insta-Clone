@@ -3,7 +3,13 @@ import React, { useState } from "react";
 const CommentInput = props => {
   let [comment, changeComment] = useState(props.comment);
   return (
-    <form className="comment-form" onSubmit={props.submitComment}>
+    <form
+      className="comment-form"
+      onSubmit={event => {
+        props.submitComment(event);
+        changeComment("");
+      }}
+    >
       <input
         type="text"
         value={comment}
