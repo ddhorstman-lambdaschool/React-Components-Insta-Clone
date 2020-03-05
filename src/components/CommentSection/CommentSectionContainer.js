@@ -5,12 +5,20 @@ import Comment from "./Comment";
 import "./Comment.css";
 
 const CommentSection = props => {
-  // Add state for the comments
-
+  let [comments, updateComments] = useState([]);
   return (
     <div>
-      {/* map through the comments data and return the Comment component */}
-      <CommentInput />
+      {comments.map((comment, idx) => {
+        return <Comment key={idx} comment={comment} />;
+      })}
+      <CommentInput
+        submitComment={commentText =>
+          updateComments(
+            comments.concat({ username: "David", text: commentText })
+          )
+        }
+        comment=""
+      />
     </div>
   );
 };
